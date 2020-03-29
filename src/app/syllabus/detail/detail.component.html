@@ -1,0 +1,40 @@
+<div *ngIf='subTopicHeading'>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{subTopicHeading}}</mat-card-title>
+      <mat-card-subtitle>Subtopics</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor='let i of subTopics; index as j'>
+          <mat-label mat-line>{{i.name}}</mat-label>
+          <mat-label>{{i.description}}</mat-label>
+          <button mat-icon-button (click)='deleteSubtopic(j)'>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf='!subTopicHeading'>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>No Subtopics</mat-card-title>
+      <mat-card-subtitle>Please add subtopics</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<mat-form-field appearance='outline'>
+  <mat-label>Sub topic</mat-label>
+  <input matInput [(ngModel)]='userInput.name'>
+</mat-form-field>
+<mat-form-field appearance='outline'>
+  <mat-label>Description</mat-label>
+  <input matInput [(ngModel)]='userInput.description'>
+</mat-form-field>
+<button mat-icon-button (click)='putSubtopics()'>
+  <mat-icon>add</mat-icon>
+</button>

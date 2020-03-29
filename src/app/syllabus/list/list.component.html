@@ -1,0 +1,20 @@
+<mat-list class='height-control'>
+  <mat-list-item *ngFor='let i of syllabus; index as j'>
+    <button mat-icon-button (click)='del(j)'>
+      <mat-icon>close</mat-icon>
+    </button>
+    <button mat-raised-button [id]='i.heading' (click)="showDetailOf(j)">
+      {{ i.heading }}
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+
+<mat-form-field appearance='outline'>
+  <mat-label>Syllabus</mat-label>
+  <input matInput
+  [(ngModel)]='syllabusName'>
+</mat-form-field>
+<button mat-icon-button (click)='putHeading()'>
+  <mat-icon>add</mat-icon>
+</button>
